@@ -25,8 +25,15 @@ Or install it yourself as:
 client = Anego::Client.new
 
 # Accounts API
-client.accounts
+response = client.accounts
 #=> GET /accounts
+
+accounts = response.body.accounts
+account = accounts.first
+
+# Products API
+client.products(account.account_id)
+
 ```
 
 ## ENV
