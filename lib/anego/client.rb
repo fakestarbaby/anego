@@ -10,6 +10,10 @@ module Anego
       request :get, "/accounts"
     end
 
+    def products(account_id)
+      request :get, "/accounts/#{account_id}/products"
+    end
+
     private
 
     def request(method, path)
