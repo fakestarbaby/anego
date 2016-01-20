@@ -38,7 +38,7 @@ products = response.body.products
 product = products.first
 
 # Product Ratings API
-response = client.product_ratings(product)
+response = client.product_ratings(product.market, product.product_id)
 
 ```
 
