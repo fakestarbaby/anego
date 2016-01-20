@@ -32,7 +32,13 @@ accounts = response.body.accounts
 account = accounts.first
 
 # Products API
-client.products(account.account_id)
+response = client.products(account.account_id)
+
+products = response.body.products
+product = products.first
+
+# Product Ratings API
+response = client.product_ratings(product)
 
 ```
 
