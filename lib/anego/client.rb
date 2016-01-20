@@ -14,8 +14,8 @@ module Anego
       request :get, "/accounts/#{account_id}/products"
     end
 
-    def product_ratings(product)
-      request :get, "/apps/#{product.market}/app/#{product.product_id}/ratings"
+    def product_ratings(market, product_id)
+      request :get, "/apps/#{market}/app/#{product_id}/ratings"
     end
 
     private
