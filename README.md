@@ -40,6 +40,9 @@ product = products.first
 # Product Ratings API
 response = client.product_ratings(product.market, product.product_id)
 
+# Product Reviews API
+response = client.product_reviews(product.market, product.product_id, "2016-01-01", "2016-04-01", "JP")
+
 ```
 
 ## ENV
