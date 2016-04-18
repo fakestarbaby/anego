@@ -18,18 +18,26 @@ module Anego
       request :get, "/apps/#{market}/app/#{product_id}/ratings"
     end
 
-    private
-
-    def request(method, path)
-      Anego::Response.new(execute(method, path))
+    def product_reviews(market, product_id, start_date, end_date, country)
+      request :get, "/apps/#{market}/app/#{product_id}/reviews", {
+        start_date: start_date,
+        end_date: end_date,
+        countries: country
+      }
     end
 
-    def execute(method, path)
+    private
+
+    def request(method, path, params = {})
+      Anego::Response.new(execute(method, path, params))
+    end
+
+    def execute(method, path, params)
       begin
         RestClient::Request.execute(
           method: method,
           url: api_endpoint(path),
-          headers: default_headers,
+          headers: headers(params),
         )
       rescue RestClient::ExceptionWithResponse => err
         raise err
@@ -38,6 +46,10 @@ module Anego
 
     def api_endpoint(path)
       "#{API_ENDPOINT}#{path}"
+    end
+
+    def headers(params)
+      params.empty? ? default_headers : default_headers.merge(params: params)
     end
 
     def default_headers
