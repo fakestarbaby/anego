@@ -37,6 +37,9 @@ response = client.products(account.account_id)
 products = response.body.products
 product = products.first
 
+# Product Details API
+response = client.product_details(product.market, product.product_id)
+
 # Product Ratings API
 response = client.product_ratings(product.market, product.product_id)
 
