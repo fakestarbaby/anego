@@ -30,12 +30,13 @@ module Anego
       }
     end
 
-    def product_ranks(market, product_id, start_date, end_date, country, category)
+    def product_ranks(market, product_id, start_date, end_date, country, category, feed)
       request :get, "/apps/#{market}/app/#{product_id}/ranks", {
         start_date: start_date,
         end_date: end_date,
         countries: country,
-        category: category
+        category: category,
+        feed: feed
       }
     end
 
