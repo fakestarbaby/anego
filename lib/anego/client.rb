@@ -40,6 +40,17 @@ module Anego
       }
     end
 
+    def product_sales(account_id, product_id, break_down, start_date, end_date, currency = nil, countries = nil, page_index = nil)
+      request :get, "/accounts/#{account_id}/products/#{product_id}/sales", {
+        break_down: break_down,
+        start_date: start_date,
+        end_date: end_date,
+        currency: currency,
+        countries: countries,
+        page_index: page_index
+      }
+    end
+
     private
 
     def request(method, path, params = {})
